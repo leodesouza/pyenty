@@ -11,7 +11,7 @@ setup(
     description="An simple object-document mapping for mongodb-motor and tornado applications.",
     author="Leonardo Souza",
     author_email="leo.desouza@gmail.com",
-    url="https://github.com/leodesouza/entity",
+    url="https://github.com/leodesouza/pyenty",
     download_url="https://github.com/leodesouza/pyenty/tree/v0.1.1",
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
