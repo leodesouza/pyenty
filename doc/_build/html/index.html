@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; pyentity  documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pyentity  documentation" href="#" />
+    <link rel="next" title="Tutorial" href="tutorial.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">pyentity  documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>A simple object-document mapper written in python for motor( a driver for MongoDB) and to be used in tornado applications.
+Although, motor accomplish the hard task of provide async methods to access mongodb,
+we  still have to get along with classic python dictionary which force us to create and maintain
+mapping of dicts-to-instance or instance-to-dicts.</p>
+<p>Simple example using motor directly:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@gen.coroutine</span>
+<span class="k">def</span> <span class="nf">do_insert</span><span class="p">():</span>
+    <span class="c"># insert dict with the same attributes found in Product class</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;my cell phone&#39;</span><span class="p">,</span><span class="s">&#39;description&#39;</span><span class="p">:</span><span class="s">&#39;blach phone&#39;</span><span class="p">,</span><span class="s">&#39;price&#39;</span><span class="p">:</span><span class="mf">10.5</span><span class="p">}</span>
+
+    <span class="c"># call motor collection</span>
+    <span class="n">future</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">future</span>
+</pre></div>
+</div>
+<p>There&#8217;s no problem if you prefer to work like this, but you always have to use some kind of mapping
+for any new added class in your model and ensure that no changes will break your existing code. In order to release you
+from boring task of accessing key/value to know something about your model,
+we suggest you to work in the following way:</p>
+<p>Defining your class:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Product</span><span class="p">(</span><span class="n">Entity</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Str</span><span class="p">()</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">Str</span><span class="p">()</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">Float</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span>
+</pre></div>
+</div>
+<p>Writing some coroutine functions:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@gen.coroutine</span>
+<span class="k">def</span> <span class="nf">save_product</span><span class="p">():</span>
+    <span class="n">emanager</span> <span class="o">=</span> <span class="n">EntityManager</span><span class="p">(</span><span class="n">Product</span><span class="p">)</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="n">Product</span><span class="p">(</span><span class="s">&#39;book&#39;</span><span class="p">,</span> <span class="s">&#39;book of the year&#39;</span><span class="p">,</span> <span class="mf">35.00</span><span class="p">)</span>
+    <span class="n">object_id</span> <span class="o">=</span> <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">emanager</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
+
+<span class="nd">@gen.coroutine</span>
+<span class="k">def</span> <span class="nf">find_product</span><span class="p">():</span>
+    <span class="n">emanager</span> <span class="o">=</span> <span class="n">EntityManager</span><span class="p">(</span><span class="n">Product</span><span class="p">)</span>
+    <span class="n">saved_product</span> <span class="o">=</span> <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">emanager</span><span class="o">.</span><span class="n">find_one</span><span class="p">(</span><span class="n">object_id</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">saved_product</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">saved_product</span><span class="o">.</span><span class="n">description</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">saved_product</span><span class="o">.</span><span class="n">price</span>
+</pre></div>
+</div>
+<div class="section" id="guide">
+<h2>Guide<a class="headerlink" href="#guide" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#guide">Guide</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="next chapter">Tutorial</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             >next</a> |</li>
+        <li><a href="#">pyentity  documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, pyentity.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
