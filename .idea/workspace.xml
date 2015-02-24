@@ -2,53 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60638647-fb01-4410-b2f8-692c6fca2a5a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/ajax-loader.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/comment-bright.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/comment-close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/comment.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/down-pressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/down.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/file.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/minus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/plus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/doctrees/pyenty.doctree" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/doctrees/tutorial.doctree" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/up-pressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/up.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/.buildinfo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/basic.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/default.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/doctools.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_modules/pyenty/entitymanager.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/genindex.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_modules/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/py-modindex.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/pyenty.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/pyenty.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/pygments.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/search.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/searchtools.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/sidebar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/tutorial.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_sources/tutorial.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_modules/pyenty/types.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/underscore.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/_build/html/_static/websupport.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/pyentity.doctree" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/doc/pyentity.rst" afterPath="$PROJECT_DIR$/doc/_build/html/_sources/pyenty.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/index.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/index.doctree" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/objects.inv" afterPath="$PROJECT_DIR$/doc/_build/html/objects.inv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/Makefile" afterPath="$PROJECT_DIR$/doc/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pyenty/__init__.py" afterPath="$PROJECT_DIR$/pyenty/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/conf.py" afterPath="$PROJECT_DIR$/doc/conf.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/pyenty.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/pyenty.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/tutorial.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/tutorial.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/doc/_build/doctrees/environment.pickle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/index.html" afterPath="$PROJECT_DIR$/doc/_build/html/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index.rst" afterPath="$PROJECT_DIR$/doc/index.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/index.txt" afterPath="$PROJECT_DIR$/doc/_build/html/_sources/index.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/make.bat" afterPath="$PROJECT_DIR$/doc/make.bat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/searchindex.js" afterPath="$PROJECT_DIR$/doc/_build/html/searchindex.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/tutorial.html" afterPath="$PROJECT_DIR$/doc/_build/html/tutorial.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/tutorial.rst" afterPath="$PROJECT_DIR$/doc/tutorial.rst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/tutorial.txt" afterPath="$PROJECT_DIR$/doc/_build/html/_sources/tutorial.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pyenty.iws" />
@@ -77,14 +40,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="entity_mapper_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/entity_mapper_test.py">
+      <file leaf-file-name="tutorial.rst" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/doc/tutorial.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1620">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.33502537" vertical-offset="0" max-vertical-offset="648">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -92,8 +53,8 @@
       <file leaf-file-name="entity_types_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/entity_types_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2610">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2019" max-vertical-offset="2610">
+              <caret line="119" column="24" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -101,59 +62,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="runtests.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/runtests.py">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="414">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CHANGES" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CHANGES">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="108">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-2.16" vertical-offset="0" max-vertical-offset="288">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LICENSE" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LICENSE">
-          <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="3744">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MANIFEST" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MANIFEST">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="198">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="conf.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/doc/conf.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1023" max-vertical-offset="6084">
-              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-              <folding>
-                <element signature="e#442#452#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -161,28 +75,8 @@
       <file leaf-file-name="index.rst" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/doc/index.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="1296">
-              <caret line="52" column="41" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pyenty.rst" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/doc/pyenty.rst">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tutorial.rst" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/doc/tutorial.rst">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21319798" vertical-offset="0" max-vertical-offset="591">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1296">
+              <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -198,11 +92,11 @@
       <list>
         <option value="$PROJECT_DIR$/tests/__init__.py" />
         <option value="$PROJECT_DIR$/setup.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/pyenty/__init__.py" />
         <option value="$PROJECT_DIR$/doc/conf.py" />
         <option value="$PROJECT_DIR$/doc/introduction.rst" />
         <option value="$PROJECT_DIR$/doc/index.rst" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/doc/tutorial.rst" />
       </list>
     </option>
@@ -257,6 +151,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="pyenty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pyenty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pyenty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -555,6 +463,13 @@
       <option name="number" value="Default" />
       <updated>1424723711739</updated>
     </task>
+    <task id="LOCAL-00001" summary="docs updated">
+      <created>1424774965195</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1424774965195</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -600,6 +515,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="docs updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -610,14 +527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="591">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.44" vertical-offset="0" max-vertical-offset="342">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -684,16 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/entity_types_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2610">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/runtests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="591">
@@ -741,14 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doc/index.rst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="1296">
-          <caret line="52" column="41" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/doc/pyenty.rst">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648">
@@ -757,10 +648,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.16" vertical-offset="0" max-vertical-offset="288">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/index.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1296">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/entity_types_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2019" max-vertical-offset="2610">
+          <caret line="119" column="24" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/doc/tutorial.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21319798" vertical-offset="0" max-vertical-offset="591">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.33502537" vertical-offset="0" max-vertical-offset="648">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
