@@ -1,21 +1,21 @@
-pyentity package
-================
+pyenty package
+==============
 
 Submodules
 ----------
 
-pyentity.entitymanager module
------------------------------
+pyenty.entitymanager module
+---------------------------
 
-.. automodule:: pyentity.entitymanager
+.. automodule:: pyenty.entitymanager
     :members:
     :undoc-members:
     :show-inheritance:
 
-pyentity.types module
----------------------
+pyenty.types module
+-------------------
 
-.. automodule:: pyentity.types
+.. automodule:: pyenty.types
     :members:
     :undoc-members:
     :show-inheritance:
@@ -24,7 +24,7 @@ pyentity.types module
 Module contents
 ---------------
 
-.. automodule:: pyentity
+.. automodule:: pyenty
     :members:
     :undoc-members:
     :show-inheritance:
