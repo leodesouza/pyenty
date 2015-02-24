@@ -1,4 +1,3 @@
-import os
 from distutils.core import setup
 
 version = '0.1.1'
@@ -16,5 +15,5 @@ setup(
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
     ],
-    license='http://www.apache.org/licenses/LICENSE-2.0',
+    license='http://www.apache.org/licenses/LICENSE-2.0', requires=['tornado', 'motor']
 )
