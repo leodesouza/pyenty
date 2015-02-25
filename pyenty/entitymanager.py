@@ -155,9 +155,9 @@ class EntityConnection(object):
     """Create a session to be used in all mongodb requests
 
         Usage:
-        EntitySession.create(db="ym_db_test", io_loop=self.io_loop)
+        EntitySession.open(db="ym_db_test", io_loop=self.io_loop)
         Or
-        EntitySession.create(db="ym_db_test")
+        EntitySession.open(db="ym_db_test")
     """
     @classmethod
     def open(cls, **kwargs):
