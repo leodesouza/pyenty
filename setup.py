@@ -15,5 +15,4 @@ setup(
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
     ],
-    license='http://www.apache.org/licenses/LICENSE-2.0', requires=['tornado', 'motor']
 )
