@@ -58,8 +58,8 @@ Writing some coroutine functions::
 
 
 .. toctree::
-   :maxdepth: 1
-   installation
+   :maxdepth: 2
+
    tutorial
    releasenotes
 
