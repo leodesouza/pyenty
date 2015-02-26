@@ -164,13 +164,14 @@ class EntityConnection(object):
 
         port = kwargs.pop('port') if 'port' in kwargs else 27017
         host = kwargs.pop('host') if 'host' in kwargs else 'localhost'
-        io_loop = kwargs.pop('io_loop') if 'io_loop' in kwargs else None
-        motor_client = motor.MotorClient(host, port, io_loop=io_loop)
-        setattr(cls, 'motor_client', motor_client)
+        if 'io_loop' in kwargs:
+            motor_client = motor.MotorClient(host, port, io_loop=kwargs.pop('io_loop'))
+        else:
+            motor_client = motor.MotorClient(host, port)
 
         if 'db' in kwargs:
             db_name = kwargs.pop('db')
-            setattr(cls, 'session', cls.motor_client[db_name])
+            setattr(cls, 'session', motor_client[db_name])
         else:
             raise KeyError('db is a Required Argument')
 
