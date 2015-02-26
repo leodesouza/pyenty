@@ -7,7 +7,7 @@ Tutorial
 ====================================
 
 
-First of all, you must know that Pyenty was developed and tested using Python 3 (3.4)
+First of all, you have to know that Pyenty was developed and tested using Python 3 (3.4)
 and before start, you have to install the following dependencies.
 
 `Tornado <https://github.com/tornadoweb/tornado/>`_::

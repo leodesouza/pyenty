@@ -204,22 +204,23 @@
     <span class="sd">&quot;&quot;&quot;Create a session to be used in all mongodb requests</span>
 
 <span class="sd">        Usage:</span>
-<span class="sd">        EntitySession.create(db=&quot;ym_db_test&quot;, io_loop=self.io_loop)</span>
+<span class="sd">        EntitySession.open(db=&quot;ym_db_test&quot;, io_loop=self.io_loop)</span>
 <span class="sd">        Or</span>
-<span class="sd">        EntitySession.create(db=&quot;ym_db_test&quot;)</span>
+<span class="sd">        EntitySession.open(db=&quot;ym_db_test&quot;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nd">@classmethod</span>
 <div class="viewcode-block" id="EntityConnection.open"><a class="viewcode-back" href="../../pyenty.html#pyenty.entitymanager.EntityConnection.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="n">port</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;port&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="s">&#39;port&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="mi">27017</span>
         <span class="n">host</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;host&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="s">&#39;host&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="s">&#39;localhost&#39;</span>
-        <span class="n">io_loop</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;io_loop&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="s">&#39;io_loop&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="bp">None</span>
-        <span class="n">motor_client</span> <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">MotorClient</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">io_loop</span><span class="o">=</span><span class="n">io_loop</span><span class="p">)</span>
-        <span class="nb">setattr</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="s">&#39;motor_client&#39;</span><span class="p">,</span> <span class="n">motor_client</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;io_loop&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">motor_client</span> <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">MotorClient</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">io_loop</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;io_loop&#39;</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">motor_client</span> <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">MotorClient</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="s">&#39;db&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="n">db_name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;db&#39;</span><span class="p">)</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="s">&#39;session&#39;</span><span class="p">,</span> <span class="n">cls</span><span class="o">.</span><span class="n">motor_client</span><span class="p">[</span><span class="n">db_name</span><span class="p">])</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="s">&#39;session&#39;</span><span class="p">,</span> <span class="n">motor_client</span><span class="p">[</span><span class="n">db_name</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s">&#39;db is a Required Argument&#39;</span><span class="p">)</span>
 </div>

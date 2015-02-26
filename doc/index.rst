@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Introduction
+PyEnty: A Object Document Mapper written in Python And Built on Top of Motor For MongoDB and Tornado web Application
 ====================================
 
 A simple object-document mapper written in python for motor( a driver for MongoDB) and to be used in tornado applications.
@@ -57,10 +57,9 @@ Writing some coroutine functions::
         price = saved_product.price
 
 
-Guide
-----------------
 .. toctree::
    :maxdepth: 1
 
    tutorial
+   releasenotes
 
