@@ -3,13 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Release notes
+Version 0.1.2
 ====================================
 
-Version 0.1.2
+15/Fev - 2015
 _________
 
-Under development
+Fix the EntityConnection.open which was not keeping the connection alive.
 
 
 
