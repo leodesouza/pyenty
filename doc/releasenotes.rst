@@ -3,8 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Version 0.1.2
+Release notes
 ====================================
+
+Version 0.1.2
+_________
 
 15/Fev - 2015
 _________
