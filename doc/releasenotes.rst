@@ -9,7 +9,7 @@ Release notes
 Version 0.1.2
 -------------
 
-15/Fev - 2015
+25/Fev - 2015
 ~~~~~~~~~~~~~
 
 Fix the EntityConnection.open which was not keeping the connection alive.
