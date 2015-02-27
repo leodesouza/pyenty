@@ -7,24 +7,7 @@ Tutorial
 ====================================
 
 
-First of all, you have to know that Pyenty was developed and tested using Python 3 (3.4)
-and before start, you have to install the following dependencies.
-
-`Tornado <https://github.com/tornadoweb/tornado/>`_::
-
-    pip install tornado
-
-`Motor <https://github.com/mongodb/motor/>`_::
-
-    pip install motor
-
-And finally, install Pyenty::
-
-    pip install pyenty
-
-
-For persistency, motor connects to highly scalable database `MongoDB <http://www.mongodb.org//>`_.
-Download and install the latest version.
+tutorial 
 
 .. toctree::
    :maxdepth: 1
