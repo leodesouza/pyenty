@@ -7,7 +7,7 @@ Tutorial
 ====================================
 
 
-tutorial 
+tutorial
 
 .. toctree::
    :maxdepth: 1
