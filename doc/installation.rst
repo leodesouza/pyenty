@@ -27,7 +27,7 @@ For persistency, motor connects to highly scalable database `MongoDB <http://www
 Download and install the latest version.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    installation
    tutorial
