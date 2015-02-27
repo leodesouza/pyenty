@@ -18,3 +18,7 @@ Fix the EntityConnection.open which was not keeping the connection alive.
 
 .. toctree::
    :maxdepth: 1
+
+   installation
+   tutorial
+   releasenotes

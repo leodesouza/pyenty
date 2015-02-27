@@ -10,4 +10,8 @@ Tutorial
 tutorial
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
+
+   installation
+   tutorial
+   releasenotes
