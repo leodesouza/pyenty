@@ -47,6 +47,4 @@ For more information about this limitations, take a look at `MongoDB Limits and 
 `Rules MongoDB Schema Design <http://blog.mongodb.org/post/87200945828/6-rules-of-thumb-for-mongodb-schema-design-part-1>`_::
 
 
-.. toctree::
-   :maxdepth: 3
 

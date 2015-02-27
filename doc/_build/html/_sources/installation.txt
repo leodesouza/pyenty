@@ -26,11 +26,3 @@ And finally, install Pyenty::
 For persistency, motor connects to highly scalable database `MongoDB <http://www.mongodb.org//>`_.
 Download and install the latest version.
 
-.. toctree::
-   :maxdepth: 5
-
-   mongoconnection
-   writtingentities
-   supportedtypes
-   tutorial
-   releasenotes

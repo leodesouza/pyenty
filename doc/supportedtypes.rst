@@ -19,10 +19,3 @@ PyEnty supports the types of string, int, float and list through the following c
 
 
 
-.. toctree::
-   :maxdepth: 2
-
-
-   tutorial
-   releasenotes
-

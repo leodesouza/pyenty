@@ -25,6 +25,4 @@ Fix - Call EntityConnection.open with *args host and port
 
 
 
-.. toctree::
-   :maxdepth: 1
 

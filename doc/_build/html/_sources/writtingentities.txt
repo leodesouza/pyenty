@@ -18,11 +18,3 @@ Example::
 
 
 
-.. toctree::
-   :maxdepth: 3
-
-
-   supportedtypes
-   tutorial
-   releasenotes
-

@@ -9,8 +9,4 @@ Tutorial
 
 
 
-.. toctree::
-   :maxdepth: 1
-
-   releasenotes
 

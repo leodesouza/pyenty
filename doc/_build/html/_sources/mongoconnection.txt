@@ -17,11 +17,5 @@ Setting up the localhost and port to EntityConnection::
      EntityConnection.open(host, port_number, db="db_name")
 
 
-.. toctree::
-   :maxdepth: 4
 
-   writtingentities
-   supportedtypes
-   tutorial
-   releasenotes
 
