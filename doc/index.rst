@@ -58,12 +58,6 @@ Writing some coroutine functions::
 
 
 .. toctree::
-   :maxdepth: 6
+   :maxdepth: 1
 
-   installation
-   mongoconnection
-   writtingentities
-   supportedtypes
-   tutorial
-   releasenotes
 
