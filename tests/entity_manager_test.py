@@ -22,7 +22,7 @@ class SaveClientTest(BaseTest):
     def test_save_client(self):
         self.object_id = yield self.emanager.save(self.client)
         self.client_result = yield self.emanager.find_one(_id=self.object_id)
-        # yield self.emanager.remove({'_id': self.object_id})
+        yield self.emanager.remove(_id=self.object_id)
         self.assertTrue(compare_objs(self.client, self.client_result), "client was not properly saved")
 
 
@@ -36,7 +36,7 @@ class ClientWithManyProductsTest(BaseTest):
     def test_saved_client_with_many_products(self):
         self.object_id = yield self.emanager.save(self.client)
         self.client_result = yield self.emanager.find_one(_id=self.object_id)
-        # yield self.emanager.remove({'_id': self.object_id})
+        yield self.emanager.remove(_id=self.object_id)
         self.assertTrue(compare_objs(self.client, self.client_result), "client was not properly saved")
 
 
@@ -50,6 +50,7 @@ class ClientWithFewAddressTest(BaseTest):
     def test_saved_client_with_address(self):
         self.object_id = yield self.emanager.save(self.client)
         self.client_result = yield self.emanager.find_one(_id=self.object_id)
+        yield self.emanager.remove(_id=self.object_id)
         self.assertTrue(compare_objs(self.client, self.client_result), "client with 3 addresses was not properly saved")
 
 
@@ -64,6 +65,7 @@ class ClientWithManyProductsAndAdressTest(BaseTest):
     def test_saved_client_with_address(self):
         self.object_id = yield self.emanager.save(self.client)
         self.client_result = yield self.emanager.find_one(_id=self.object_id)
+        yield self.emanager.remove(_id=self.object_id)
         self.assertTrue(compare_objs(self.client, self.client_result), "client with 3 addresses was not properly saved")
 
 
@@ -77,6 +79,7 @@ class StoreWithThreeClientsOnlyTest(BaseTest):
     def test_saved_client_with_address(self):
         self.object_id = yield self.emanager.save(self.client)
         self.client_result = yield self.emanager.find_one(_id=self.object_id)
+        yield self.emanager.remove(_id=self.object_id)
         self.assertTrue(compare_objs(self.client, self.client_result), "client with 3 addresses was not properly saved")
 
 
@@ -100,6 +103,8 @@ class DeletedClientTest(BaseTest):
         self.clients = yield self.emanager.find()
         self.assertEqual(self.objectid_1, self.clients[0]._id)
         self.assertEqual(self.objectid_3, self.clients[1]._id)
+
+        yield self.emanager.remove_all()
 
 
 class UpdatedClientTest(BaseTest):
@@ -165,10 +170,12 @@ class ClientWithOneAddressTest(BaseTest):
             self.client_with_address.set_address(self.address)
 
         @gen_test
-        def test_saved_client_with_ony_address(self):
+        def test_saved_client_with_one_address(self):
             object_id = yield self.emanager.save(self.client_with_address)
             saved_client = yield self.emanager.find_one(_id=object_id)
+            yield self.emanager.remove(_id=object_id)
             self.assertTrue(compare_objs(saved_client.address, self.address), "Address was not mapped")
+
 
 
 class ConnectionUsingHostPortTest(AsyncTestCase):
