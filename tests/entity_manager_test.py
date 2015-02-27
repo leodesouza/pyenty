@@ -177,16 +177,15 @@ class ClientWithOneAddressTest(BaseTest):
             self.assertTrue(compare_objs(saved_client.address, self.address), "Address was not mapped")
 
 
-
 class ConnectionUsingHostPortTest(AsyncTestCase):
     def setUp(self):
         super(ConnectionUsingHostPortTest, self).setUp()
-        EntityConnection.open(db="ym_db_test_16", host='localhost', port=8881, io_loop=self.io_loop)
+        EntityConnection.open('localhost', 27017, db="ym_db_test_16", io_loop=self.io_loop)
         self.emanager = EntityManager(SimpleClient)
         self.simple_client = SimpleClient('_name', '__last_name')
 
     @gen_test
-    def test_saved_client_with_ony_address(self):
+    def test_saved_simple_client(self):
         object_id = yield self.emanager.save(self.simple_client)
         saved_client = yield self.emanager.find_one(_id=object_id)
         self.assertTrue(compare_objs(self.simple_client, saved_client), "client was not mapped")
