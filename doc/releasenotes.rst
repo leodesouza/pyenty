@@ -15,6 +15,15 @@ Version 0.1.2
 Fix the EntityConnection.open which was not keeping the connection alive.
 
 
+Version 0.1.3
+-------------
+
+27/Fev - 2015
+~~~~~~~~~~~~~
+
+Fix - Call EntityConnection.open with *args host and port
+
+
 
 .. toctree::
    :maxdepth: 3
