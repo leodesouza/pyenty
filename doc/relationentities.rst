@@ -40,8 +40,7 @@ The way the class will be saved in mongodb::
     }
 
 In this example, products lists tends to grow a lot and can impact your project in future with some MongoDB limitations.
-For more information about this limitations, take a look at `MongoDB Limits and Thresholds <http://docs.mongodb.org/manual/reference/limits/>`_::
-
+For more information about this limitations, take a look at `MongoDB Limits and Thresholds <http://docs.mongodb.org/manual/reference/limits/>`_
 
 
 `Rules MongoDB Schema Design <http://blog.mongodb.org/post/87200945828/6-rules-of-thumb-for-mongodb-schema-design-part-1>`_::

@@ -64,6 +64,7 @@ Writing some coroutine functions::
    mongoconnection
    writtingentities
    supportedtypes
+   relationentities
    tutorial
    releasenotes
 
