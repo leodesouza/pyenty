@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>MongoDB connection &mdash; pyenty  documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pyenty  documentation" href="index.html" />
+    <link rel="next" title="Writting your entities" href="writtingentities.html" />
+    <link rel="prev" title="Release notes" href="releasenotes.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="writtingentities.html" title="Writting your entities"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="releasenotes.html" title="Release notes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pyenty  documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mongodb-connection">
+<h1>MongoDB connection<a class="headerlink" href="#mongodb-connection" title="Permalink to this headline">¶</a></h1>
+<p>Open connection to MongoDB is pretty simple and can be done using one of the below options.</p>
+<p>With default localhost and port:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">EntitySession</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="s">&quot;db_name&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Setting up the localhost and port to EntityConnection:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">EntityConnection</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port_number</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="s">&quot;db_name&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="writtingentities.html">Writting your entities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="supportedtypes.html">Supported types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="releasenotes.html">Release notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="releasenotes.html">Release notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="releasenotes.html#version-0-1-2">Version 0.1.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="releasenotes.html#version-0-1-3">Version 0.1.3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="releasenotes.html">Release notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="releasenotes.html#version-0-1-2">Version 0.1.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="releasenotes.html#version-0-1-3">Version 0.1.3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="releasenotes.html">Release notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="releasenotes.html#version-0-1-2">Version 0.1.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="releasenotes.html#fev-2015">25/Fev - 2015</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="releasenotes.html#version-0-1-3">Version 0.1.3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="releasenotes.html#id1">27/Fev - 2015</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="supportedtypes.html">Supported types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="releasenotes.html">Release notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="releasenotes.html#version-0-1-2">Version 0.1.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="releasenotes.html#version-0-1-3">Version 0.1.3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="releasenotes.html">Release notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="releasenotes.html#version-0-1-2">Version 0.1.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="releasenotes.html#fev-2015">25/Fev - 2015</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="releasenotes.html#version-0-1-3">Version 0.1.3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="releasenotes.html#id1">27/Fev - 2015</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="releasenotes.html">Release notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="releasenotes.html#version-0-1-2">Version 0.1.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="releasenotes.html#fev-2015">25/Fev - 2015</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="releasenotes.html#version-0-1-3">Version 0.1.3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="releasenotes.html#id1">27/Fev - 2015</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="releasenotes.html#version-0-1-2">Version 0.1.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="releasenotes.html#fev-2015">25/Fev - 2015</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="releasenotes.html#version-0-1-3">Version 0.1.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="releasenotes.html#id1">27/Fev - 2015</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="releasenotes.html"
+                        title="previous chapter">Release notes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="writtingentities.html"
+                        title="next chapter">Writting your entities</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/mongoconnection.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="writtingentities.html" title="Writting your entities"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="releasenotes.html" title="Release notes"
+             >previous</a> |</li>
+        <li><a href="index.html">pyenty  documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, pyenty.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
+    </div>
+  </body>
+</html>

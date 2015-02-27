@@ -157,8 +157,8 @@ class EntityConnection(object):
         Usage Options:
          - EntitySession.open(db="db_name", io_loop=self.io_loop)
          - EntitySession.open(db="db_name")
-         - EntityConnection.open('localhost', 27017, db="ym_db_test_16")
-         - EntityConnection.open('localhost', 27017, db="ym_db_test_16", io_loop=self.io_loop)
+         - EntityConnection.open('localhost', port_number, db="db_name")
+         - EntityConnection.open('localhost', port_number, db="db_name", io_loop=self.io_loop)
     """
     @classmethod
     def open(cls, *args, **kwargs):
