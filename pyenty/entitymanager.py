@@ -154,20 +154,19 @@ class EntityManager(object):
 class EntityConnection(object):
     """Create a session to be used in all mongodb requests
 
-        Usage:
-        EntitySession.open(db="ym_db_test", io_loop=self.io_loop)
-        Or
-        EntitySession.open(db="ym_db_test")
+        Usage Options:
+         - EntitySession.open(db="db_name", io_loop=self.io_loop)
+         - EntitySession.open(db="db_name")
+         - EntityConnection.open(db="db_name", host='localhost', port=8881, io_loop=self.io_loop)
+         - EntityConnection.open(db="db_name", host='localhost', port=8881)
     """
     @classmethod
-    def open(cls, **kwargs):
+    def open(cls, *args, **kwargs):
 
-        port = kwargs.pop('port') if 'port' in kwargs else 27017
-        host = kwargs.pop('host') if 'host' in kwargs else 'localhost'
         if 'io_loop' in kwargs:
-            motor_client = motor.MotorClient(host, port, io_loop=kwargs.pop('io_loop'))
+            motor_client = motor.MotorClient(*args, io_loop=kwargs.pop('io_loop'))
         else:
-            motor_client = motor.MotorClient(host, port)
+            motor_client = motor.MotorClient(*args)
 
         if 'db' in kwargs:
             db_name = kwargs.pop('db')
