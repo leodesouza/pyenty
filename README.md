@@ -10,7 +10,7 @@ Requirements
 ------------------
 The following three python libraries are required
 
-* [python 3.4 or later]
+* python 3.4 or later
 * [motor 0.3 or later](http://github.com/mongodb/mongo-python-driver)
 * [tornado 3.1 or later](http://github.com/facebook/tornado)
 * [mongodb](http://www.mongodb.org//)
