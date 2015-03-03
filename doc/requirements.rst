@@ -19,7 +19,7 @@ If you choose to install the packages one by one, check pyenty requirements:
 
 * Python 3.4 or later.
 * `Tornado 3.1 or later <https://github.com/tornadoweb/tornado/>`_::
-* `Motor  3.1 or later <https://github.com/mongodb/motor/>`_::
+* `Motor  0.3 or later <https://github.com/mongodb/motor/>`_::
 * `MongoDB <http://www.mongodb.org//>`_::
 
 
