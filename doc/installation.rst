@@ -5,16 +5,16 @@
 
 Installation
 ====================================
+.. _installation:
 
+Pyenty was developed and tested using Python 3 (3.4)
+and before start using it, install the following tools.
 
-First of all, you have to know that Pyenty was developed and tested using Python 3 (3.4)
-and before start, you have to install the following dependencies.
-
-`Tornado <https://github.com/tornadoweb/tornado/>`_::
+`Tornado Web Framework <https://github.com/tornadoweb/tornado/>`_::
 
     pip install tornado
 
-`Motor <https://github.com/mongodb/motor/>`_::
+`MongoDB Driver - Motor <https://github.com/mongodb/motor/>`_::
 
     pip install motor
 

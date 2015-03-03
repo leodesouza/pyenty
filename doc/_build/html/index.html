@@ -66,8 +66,9 @@ mapping of dicts-to-instance or instance-to-dicts.</p>
 </pre></div>
 </div>
 <p>There&#8217;s no problem if you prefer to work like this, but you always have to use some kind of mapping
-for any new added class in your model. If you really want to release yourself from boring task of accessing key/value
-whenever you have connect to mongodb, we suggest you to work in the following way:</p>
+for any new added class and maintain your existing mapping when something changes.
+If you really want to release yourself from boring task of accessing key/value
+whenever you write code to read/write from/to database, we suggest you to work in the following way:</p>
 <p>Write your entity:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Product</span><span class="p">(</span><span class="n">Entity</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">Str</span><span class="p">()</span>
@@ -80,7 +81,7 @@ whenever you have connect to mongodb, we suggest you to work in the following wa
         <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span>
 </pre></div>
 </div>
-<p>And call EntityManager to save and find:</p>
+<p>Create an instance of entity with some data and call EntityManager to save and find:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nd">@gen.coroutine</span>
 <span class="k">def</span> <span class="nf">save_product</span><span class="p">():</span>
     <span class="n">emanager</span> <span class="o">=</span> <span class="n">EntityManager</span><span class="p">(</span><span class="n">Product</span><span class="p">)</span>
@@ -99,9 +100,9 @@ whenever you have connect to mongodb, we suggest you to work in the following wa
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entitymodel.html">Entity model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="createapp.html">Creating a Tornado Web Application</a></li>
-<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">A Tornado App Example Using PyEnty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
 </ul>
 </div>
 </div>
