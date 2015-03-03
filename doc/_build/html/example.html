@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>A Tornado App Example Using PyEnty &mdash; pyenty  documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pyenty  documentation" href="index.html" />
+    <link rel="next" title="Release Notes" href="releasenotes.html" />
+    <link rel="prev" title="Requirements" href="requirements.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="releasenotes.html" title="Release Notes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="requirements.html" title="Requirements"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pyenty  documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="a-tornado-app-example-using-pyenty">
+<h1>A Tornado App Example Using PyEnty<a class="headerlink" href="#a-tornado-app-example-using-pyenty" title="Permalink to this headline">¶</a></h1>
+<p>Here&#8217;s a simple and all you need to use pyenty in tornado application</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">tornado.gen</span> <span class="kn">import</span> <span class="n">coroutine</span>
+<span class="kn">import</span> <span class="nn">tornado.httpserver</span>
+<span class="kn">import</span> <span class="nn">tornado.ioloop</span>
+<span class="kn">import</span> <span class="nn">tornado.web</span>
+
+<span class="kn">from</span> <span class="nn">pyenty</span> <span class="kn">import</span> <span class="n">EntityConnection</span><span class="p">,</span> <span class="n">EntityManager</span>
+<span class="kn">from</span> <span class="nn">pyenty.types</span> <span class="kn">import</span> <span class="n">Entity</span><span class="p">,</span> <span class="n">Str</span><span class="p">,</span> <span class="n">List</span>
+
+
+<span class="k">class</span> <span class="nc">Profile</span><span class="p">(</span><span class="n">Entity</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Str</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">Entity</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Str</span><span class="p">()</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">Str</span><span class="p">()</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">List</span><span class="p">(</span><span class="n">Profile</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_name</span> <span class="o">=</span> <span class="n">last_name</span>
+
+    <span class="k">def</span> <span class="nf">add_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profile</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">UserHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+    <span class="n">emanager</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="nd">@coroutine</span>
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emanager</span> <span class="o">=</span> <span class="n">EntityManager</span><span class="p">(</span><span class="n">entity</span><span class="o">=</span><span class="n">User</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_argument</span><span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">)</span>
+        <span class="n">last_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_argument</span><span class="p">(</span><span class="s">&#39;last_name&#39;</span><span class="p">)</span>
+
+        <span class="c"># add user</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">add_profile</span><span class="p">(</span><span class="n">Profile</span><span class="p">(</span><span class="s">&#39;guest&#39;</span><span class="p">))</span>
+        <span class="n">object_id</span> <span class="o">=</span> <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">emanager</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+
+
+    <span class="nd">@coroutine</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">emanager</span> <span class="o">=</span> <span class="n">EntityManager</span><span class="p">(</span><span class="n">User</span><span class="p">)</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">emanager</span><span class="o">.</span><span class="n">find</span><span class="p">()</span>
+
+
+<span class="n">EntityConnection</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="s">&quot;ym_db_test&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span>
+        <span class="p">[(</span><span class="s">r&#39;/user&#39;</span><span class="p">,</span> <span class="n">UserHandler</span><span class="p">),</span> <span class="p">],</span>
+        <span class="n">autoreload</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">)</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">8889</span><span class="p">)</span>
+    <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="requirements.html"
+                        title="previous chapter">Requirements</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="releasenotes.html"
+                        title="next chapter">Release Notes</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/example.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="releasenotes.html" title="Release Notes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="requirements.html" title="Requirements"
+             >previous</a> |</li>
+        <li><a href="index.html">pyenty  documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, pyenty.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
+    </div>
+  </body>
+</html>
