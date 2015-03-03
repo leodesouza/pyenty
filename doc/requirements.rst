@@ -15,7 +15,7 @@ See :ref:`Installation section <installation>`.
 You can also install all requirements to use pyenty just using motor pip install.
 See `Motor Installation <https://motor.readthedocs.org/en/latest/installation.html>`_::
 
-If you choose to install the packaged one by one, check pyenty requirements:
+If you choose to install the packages one by one, check pyenty requirements:
 
 * Python 3.4 or later.
 * `Tornado 3.1 or later <https://github.com/tornadoweb/tornado/>`_::
