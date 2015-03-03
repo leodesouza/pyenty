@@ -26,8 +26,8 @@
     <link rel="top" title="pyenty  documentation" href="#" />
     <link rel="next" title="Installation" href="installation.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -46,7 +46,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="pyenty">
 <h1>PyEnty<a class="headerlink" href="#pyenty" title="Permalink to this headline">¶</a></h1>
@@ -66,10 +66,9 @@ mapping of dicts-to-instance or instance-to-dicts.</p>
 </pre></div>
 </div>
 <p>There&#8217;s no problem if you prefer to work like this, but you always have to use some kind of mapping
-for any new added class in your model and ensure that no changes will break your existing code. In order to release you
-from boring task of accessing key/value to know something about your model,
-we suggest you to work in the following way:</p>
-<p>Defining your class:</p>
+for any new added class in your model. If you really want to release yourself from boring task of accessing key/value
+whenever you have connect to mongodb, we suggest you to work in the following way:</p>
+<p>Write your entity:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Product</span><span class="p">(</span><span class="n">Entity</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">Str</span><span class="p">()</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">Str</span><span class="p">()</span>
@@ -81,7 +80,7 @@ we suggest you to work in the following way:</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span>
 </pre></div>
 </div>
-<p>Writing some coroutine functions:</p>
+<p>And call EntityManager to save and find:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nd">@gen.coroutine</span>
 <span class="k">def</span> <span class="nf">save_product</span><span class="p">():</span>
     <span class="n">emanager</span> <span class="o">=</span> <span class="n">EntityManager</span><span class="p">(</span><span class="n">Product</span><span class="p">)</span>
@@ -100,11 +99,8 @@ we suggest you to work in the following way:</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mongoconnection.html">MongoDB connection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="writtingentities.html">Writting your entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="supportedtypes.html">Supported types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relationentities.html">Relationships Between Entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entitymodel.html">Entity model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="createapp.html">Creating a Tornado Web Application</a></li>
 <li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release notes</a></li>
 </ul>
 </div>
@@ -114,19 +110,17 @@ we suggest you to work in the following way:</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Next topic</h4>
   <p class="topless"><a href="installation.html"
                         title="next chapter">Installation</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/index.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -143,7 +137,7 @@ we suggest you to work in the following way:</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -158,9 +152,9 @@ we suggest you to work in the following way:</p>
         <li><a href="#">pyenty  documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2015, pyenty.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

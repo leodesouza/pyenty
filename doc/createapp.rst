@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 
-Supported types
+Creating a Tornado Web Application
 ===============
 
 Of course this is a just a simple example where a class has only one attribute of string type.

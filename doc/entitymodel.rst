@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Entity Model
+Entity model
 ==============================
 
 Whenever you want or need to work with lists, you have to use the PyEnty List(typeof=) class.

@@ -26,8 +26,8 @@
     <link rel="top" title="pyenty  documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -44,7 +44,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <h1>Source code for pyenty.types</h1><div class="highlight"><pre>
 <span class="c">#!/usr/bin/env python</span>
@@ -99,10 +99,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_expected_type</span> <span class="o">=</span> <span class="n">typeof</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">expected_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Type.expected_type"><a class="viewcode-back" href="../../pyenty.html#pyenty.types.Type.expected_type">[docs]</a>    <span class="k">def</span> <span class="nf">expected_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span> <span class="n">_expected_type</span>
 
-</div>
+</div></div>
 <div class="viewcode-block" id="List"><a class="viewcode-back" href="../../pyenty.html#pyenty.types.List">[docs]</a><span class="k">class</span> <span class="nc">List</span><span class="p">(</span><span class="n">Typed</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; List inherit from both Typed and list in order to use only one type</span>
 <span class="sd">        entity requires</span>
@@ -144,14 +144,14 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">List</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
 </div>
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">typed_of</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="List.typed_of"><a class="viewcode-back" href="../../pyenty.html#pyenty.types.List.typed_of">[docs]</a>    <span class="k">def</span> <span class="nf">typed_of</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_typeof</span>
-
+</div>
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">expected_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="List.expected_type"><a class="viewcode-back" href="../../pyenty.html#pyenty.types.List.expected_type">[docs]</a>    <span class="k">def</span> <span class="nf">expected_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expected_type</span>
 
-</div>
+</div></div>
 <div class="viewcode-block" id="OrderedMeta"><a class="viewcode-back" href="../../pyenty.html#pyenty.types.OrderedMeta">[docs]</a><span class="k">class</span> <span class="nc">OrderedMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Metaclass which provides an OrderedDict instead of default dict to map Entity instances&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">clsname</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">clsdict</span><span class="p">):</span>
@@ -231,9 +231,9 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-<div id="searchbox" style="display: none" role="search">
+<div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" />
@@ -250,7 +250,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -263,9 +263,9 @@
           <li><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2015, pyenty.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

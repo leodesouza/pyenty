@@ -23,11 +23,10 @@ Simple example using motor directly::
         result = yield future
 
 There's no problem if you prefer to work like this, but you always have to use some kind of mapping
-for any new added class in your model and ensure that no changes will break your existing code. In order to release you
-from boring task of accessing key/value to know something about your model,
-we suggest you to work in the following way:
+for any new added class in your model. If you really want to release yourself from boring task of accessing key/value
+whenever you have connect to mongodb, we suggest you to work in the following way:
 
-Defining your class::
+Write your entity::
 
     class Product(Entity):
         name = Str()
@@ -40,7 +39,7 @@ Defining your class::
             self.price = price
 
 
-Writing some coroutine functions::
+And call EntityManager to save and find::
 
     @gen.coroutine
     def save_product():
@@ -61,10 +60,7 @@ Writing some coroutine functions::
    :maxdepth: 1
 
    installation
-   mongoconnection
-   writtingentities
-   supportedtypes
-   relationentities
-   tutorial
+   entitymodel
+   createapp
    releasenotes
 
