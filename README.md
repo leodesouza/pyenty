@@ -8,7 +8,6 @@ pip install pyenty
 
 Requirements
 ------------------
-The following three python libraries are required
 
 * python 3.4 or later
 * [motor 0.3 or later](http://github.com/mongodb/mongo-python-driver)
