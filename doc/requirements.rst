@@ -17,4 +17,9 @@ See `Motor Installation <https://motor.readthedocs.org/en/latest/installation.ht
 
 If you choose to install the packaged one by one, check pyenty requirements:
 
+* Python 3.4 or later.
+* `Tornado 3.1 or later <https://github.com/tornadoweb/tornado/>`_::
+* `Motor  3.1 or later <https://github.com/mongodb/motor/>`_::
+* `MongoDB <http://www.mongodb.org//>`_::
+
 
