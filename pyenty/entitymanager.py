@@ -25,28 +25,28 @@ from pyenty.types import Entity
 class EntityManager(object):
     """Class responsible for object-document mapping.
 
-       Wraps motor functions and provide mapping of instance of Entity
-       Entity is a pyenty's base class needed to use with EntityManager
+    Wraps motor functions and provide mapping of instance of Entity
+    Entity is a pyenty's base class needed to use with EntityManager
 
-        Example::
+    Example::
 
-            class Product(Entity):
-                name = Str()
-                description = Str()
-                price = Float()
+        class Product(Entity):
+            name = Str()
+            description = Str()
+            price = Float()
 
-                def __init__(self, name="", description="", price=0.0)
-                    self.name = name
-                    self.description = description
-                    self.price = price
+            def __init__(self, name="", description="", price=0.0)
+                self.name = name
+                self.description = description
+                self.price = price
 
-            # using with tornado.gen.coroutine
-            @coroutine
-            def create_product():
-                emanager = EntityManager(Product)
-                product = Product(name="p", description="cell phone", price=150.38)
-                object_id = yield emanager.save(product)
-                saved_product = yield emanager.find_one(_id=object_id)
+        # using with tornado.gen.coroutine
+        @coroutine
+        def create_product():
+            emanager = EntityManager(Product)
+            product = Product(name="p", description="cell phone", price=150.38)
+            object_id = yield emanager.save(product)
+            saved_product = yield emanager.find_one(_id=object_id)
     """
     def __init__(self, entity, pluralize=False):
         assert isinstance(pluralize, bool), "Error: pluralize parameter must be bool"
@@ -59,7 +59,7 @@ class EntityManager(object):
         self.set_collection(self.__entity)
 
     def set_pluralize(self, pluralize):
-        """enabled/disable pluralization """
+        """enabled/disable pluralization"""
         self.__pluralize = pluralize
 
     def save(self, entity):
@@ -68,23 +68,28 @@ class EntityManager(object):
         return self.__collection.save(entity.as_dict())
 
     def remove(self, **kwargs):
-        """Executes collection's remove method based on keyword args
-            Returns future
+        """Returns future.
 
-            Usage:
+        Executes collection's remove method based on keyword args
+
+        Example::
+
             manager = EntityManager(Product)
             yield manager.remove(_id=object_id})
 
-         """
+        """
         return self.__collection.remove(kwargs)
 
     def find_one(self, **kwargs):
-        """Executes collection's find_one method based on keyword args
-            maps result ( dict to instance ) and return future
+        """Returns future.
 
-            Usage:
-            manager = EntityManager(Product)
-            product_saved = yield manager.find_one(_id=object_id)
+        Executes collection's find_one method based on keyword args
+        maps result ( dict to instance ) and return future
+
+        Example::
+
+           manager = EntityManager(Product)
+           product_saved = yield manager.find_one(_id=object_id)
 
          """
         future = TracebackFuture()
@@ -103,12 +108,15 @@ class EntityManager(object):
 
     @coroutine
     def find(self, **kwargs):
-        """ Executes collection's find method based on keyword args
-            maps results ( dict to list of entity instances).
+        """Returns List(typeof=).
 
-            Set max_limit parameter to limit the amount of data send back through network
+        Executes collection's find method based on keyword args
+        maps results ( dict to list of entity instances).
 
-            Usage:
+        Set max_limit parameter to limit the amount of data send back through network
+
+        Example::
+
             manager = EntityManager(Product)
             products = yield manager.find(age={'$gt': 17}, max_limit=100)
 
@@ -125,9 +133,9 @@ class EntityManager(object):
         return instances
 
     def update(self, entity):
-        """ Executes collection's update method based on keyword args
+        """ Executes collection's update method based on keyword args.
 
-            Usage:
+        Example::
 
             manager = EntityManager(Product)
             p = Product()
@@ -160,7 +168,7 @@ class EntityManager(object):
 class EntityConnection(object):
     """Create a session to be used in all mongodb requests
 
-        Usage Options:
+    Examples::
          - EntitySession.open(db="db_name", io_loop=self.io_loop)
          - EntitySession.open(db="db_name")
          - EntityConnection.open('localhost', port_number, db="db_name")
@@ -169,7 +177,6 @@ class EntityConnection(object):
 
     @classmethod
     def open(cls, *args, **kwargs):
-
         if 'io_loop' in kwargs:
             motor_client = motor.MotorClient(*args, io_loop=kwargs.pop('io_loop'))
         else:
