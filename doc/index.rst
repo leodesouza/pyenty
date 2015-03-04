@@ -13,14 +13,23 @@ mapping of dicts-to-instance or instance-to-dicts.
 
 Simple example using motor directly::
 
+    # insert an instance of dict
     @gen.coroutine
     def do_insert():
         # insert dict with the same attributes found in Product class
         product = {'name':'my cell phone','description':'blach phone','price':10.5}
 
         # call motor collection
-        future = collection.insert(product)
-        result = yield future
+        objectid = yield collection.insert(product)
+
+    # read dict from motor's find_one method
+    @gen.coroutine
+    def find():
+        dict_product yield collection.find_one({'_id': objectid})
+        name = dict_product['name']
+        description = dict_product['description']
+        price = dict_product['price']
+
 
 There's no problem if you prefer to work like this, but you always have to use some kind of mapping
 for any new added class and maintain your existing mapping when something changes.
