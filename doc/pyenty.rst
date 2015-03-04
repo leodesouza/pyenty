@@ -8,10 +8,9 @@ pyenty.entitymanager module
 ---------------------------
 
 .. automodule:: pyenty.entitymanager
-
-    -- EntityManager
-
-    .. autoclass:: EntityManager
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
 pyenty.types module
 -------------------

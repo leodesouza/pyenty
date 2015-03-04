@@ -3,15 +3,15 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-:class:`EntityManager`
-========================
+API
+==================================
 
-.. currentmodule:: pyenty
+Contents:
 
-.. autoclass:: EntityManager
-  :members:
+.. toctree::
+   :maxdepth: 4
 
-
+   pyenty
 
 
 
