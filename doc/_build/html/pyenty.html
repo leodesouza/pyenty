@@ -58,7 +58,7 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p>Create a session to be used in all mongodb requests</p>
 <dl class="docutils">
-<dt>Usage Options:</dt>
+<dt>Examples::</dt>
 <dd><ul class="first last simple">
 <li>EntitySession.open(db=&#8221;db_name&#8221;, io_loop=self.io_loop)</li>
 <li>EntitySession.open(db=&#8221;db_name&#8221;)</li>
@@ -93,8 +93,7 @@
 <p>Class responsible for object-document mapping.</p>
 <p>Wraps motor functions and provide mapping of instance of Entity
 Entity is a pyenty&#8217;s base class needed to use with EntityManager</p>
-<blockquote>
-<div><p>Example:</p>
+<p>Example:</p>
 <div class="highlight-python"><div class="highlight"><pre>class Product(Entity):
     name = Str()
     description = Str()
@@ -114,36 +113,43 @@ def create_product():
     saved_product = yield emanager.find_one(_id=object_id)
 </pre></div>
 </div>
-</div></blockquote>
 <dl class="method">
 <dt id="pyenty.entitymanager.EntityManager.find">
 <code class="descname">find</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyenty/entitymanager.html#EntityManager.find"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyenty.entitymanager.EntityManager.find" title="Permalink to this definition">¶</a></dt>
-<dd><p>Executes collection&#8217;s find method based on keyword args
+<dd><p>Returns List(typeof=).</p>
+<p>Executes collection&#8217;s find method based on keyword args
 maps results ( dict to list of entity instances).</p>
 <p>Set max_limit parameter to limit the amount of data send back through network</p>
-<p>Usage:
-manager = EntityManager(Product)
-products = yield manager.find(age={&#8216;$gt&#8217;: 17}, max_limit=100)</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">manager</span> <span class="o">=</span> <span class="n">EntityManager</span><span class="p">(</span><span class="n">Product</span><span class="p">)</span>
+<span class="n">products</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">manager</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;$gt&#39;</span><span class="p">:</span> <span class="mi">17</span><span class="p">},</span> <span class="n">max_limit</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="pyenty.entitymanager.EntityManager.find_one">
 <code class="descname">find_one</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyenty/entitymanager.html#EntityManager.find_one"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyenty.entitymanager.EntityManager.find_one" title="Permalink to this definition">¶</a></dt>
-<dd><p>Executes collection&#8217;s find_one method based on keyword args
+<dd><p>Returns future.</p>
+<p>Executes collection&#8217;s find_one method based on keyword args
 maps result ( dict to instance ) and return future</p>
-<p>Usage:
-manager = EntityManager(Product)
-product_saved = yield manager.find_one(_id=object_id)</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">manager</span> <span class="o">=</span> <span class="n">EntityManager</span><span class="p">(</span><span class="n">Product</span><span class="p">)</span>
+<span class="n">product_saved</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">manager</span><span class="o">.</span><span class="n">find_one</span><span class="p">(</span><span class="n">_id</span><span class="o">=</span><span class="n">object_id</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="pyenty.entitymanager.EntityManager.remove">
 <code class="descname">remove</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyenty/entitymanager.html#EntityManager.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyenty.entitymanager.EntityManager.remove" title="Permalink to this definition">¶</a></dt>
-<dd><p>Executes collection&#8217;s remove method based on keyword args
-Returns future</p>
-<p>Usage:
-manager = EntityManager(Product)
-yield manager.remove(_id=object_id})</p>
+<dd><p>Returns future.</p>
+<p>Executes collection&#8217;s remove method based on keyword args</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre>manager = EntityManager(Product)
+yield manager.remove(_id=object_id})
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -172,14 +178,17 @@ yield manager.remove(_id=object_id})</p>
 <dl class="method">
 <dt id="pyenty.entitymanager.EntityManager.update">
 <code class="descname">update</code><span class="sig-paren">(</span><em>entity</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyenty/entitymanager.html#EntityManager.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyenty.entitymanager.EntityManager.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Executes collection&#8217;s update method based on keyword args</p>
-<p>Usage:</p>
-<p>manager = EntityManager(Product)
-p = Product()
-p.name = &#8216;new name&#8217;
-p.description = &#8216;new description&#8217;
-p.price = 300.0</p>
-<p>yield manager.update(p)</p>
+<dd><p>Executes collection&#8217;s update method based on keyword args.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">manager</span> <span class="o">=</span> <span class="n">EntityManager</span><span class="p">(</span><span class="n">Product</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Product</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;new name&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s">&#39;new description&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="mf">300.0</span>
+
+<span class="k">yield</span> <span class="n">manager</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </dd></dl>

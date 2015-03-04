@@ -4,31 +4,29 @@
    contain the root `toctree` directive.
 
 PyEnty
-====================================
+======
 
 A simple object-document mapper written in python for motor( a driver for MongoDB) and to be used in tornado applications.
 Although, motor accomplish the hard task of provide async methods to access mongodb,
 we  still have to get along with classic python dictionary which force us to create and maintain 
 mapping of dicts-to-instance or instance-to-dicts.
 
-Simple example using motor directly::
+Simple example using motor::
 
-    # insert an instance of dict
+    #saves a dict with some values
     @gen.coroutine
-    def do_insert():
-        # insert dict with the same attributes found in Product class
-        product = {'name':'my cell phone','description':'blach phone','price':10.5}
-
-        # call motor collection
+    def save_product():
+        product = {'name':'cell phone', 'description':'black phone', 'price':10.5}
+        # motor collection
         objectid = yield collection.insert(product)
 
-    # read dict from motor's find_one method
     @gen.coroutine
-    def find():
-        dict_product yield collection.find_one({'_id': objectid})
-        name = dict_product['name']
-        description = dict_product['description']
-        price = dict_product['price']
+    def find_product():
+        product = yield collection.find_one({'_id': objectid})
+        name = product['name']
+        description = product['description']
+        price = product['price']
+
 
 
 There's no problem if you prefer to work like this, but you always have to use some kind of mapping

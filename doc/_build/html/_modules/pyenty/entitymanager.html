@@ -74,28 +74,28 @@
 <div class="viewcode-block" id="EntityManager"><a class="viewcode-back" href="../../pyenty.html#pyenty.entitymanager.EntityManager">[docs]</a><span class="k">class</span> <span class="nc">EntityManager</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class responsible for object-document mapping.</span>
 
-<span class="sd">       Wraps motor functions and provide mapping of instance of Entity</span>
-<span class="sd">       Entity is a pyenty&#39;s base class needed to use with EntityManager</span>
+<span class="sd">    Wraps motor functions and provide mapping of instance of Entity</span>
+<span class="sd">    Entity is a pyenty&#39;s base class needed to use with EntityManager</span>
 
-<span class="sd">        Example::</span>
+<span class="sd">    Example::</span>
 
-<span class="sd">            class Product(Entity):</span>
-<span class="sd">                name = Str()</span>
-<span class="sd">                description = Str()</span>
-<span class="sd">                price = Float()</span>
+<span class="sd">        class Product(Entity):</span>
+<span class="sd">            name = Str()</span>
+<span class="sd">            description = Str()</span>
+<span class="sd">            price = Float()</span>
 
-<span class="sd">                def __init__(self, name=&quot;&quot;, description=&quot;&quot;, price=0.0)</span>
-<span class="sd">                    self.name = name</span>
-<span class="sd">                    self.description = description</span>
-<span class="sd">                    self.price = price</span>
+<span class="sd">            def __init__(self, name=&quot;&quot;, description=&quot;&quot;, price=0.0)</span>
+<span class="sd">                self.name = name</span>
+<span class="sd">                self.description = description</span>
+<span class="sd">                self.price = price</span>
 
-<span class="sd">            # using with tornado.gen.coroutine</span>
-<span class="sd">            @coroutine</span>
-<span class="sd">            def create_product():</span>
-<span class="sd">                emanager = EntityManager(Product)</span>
-<span class="sd">                product = Product(name=&quot;p&quot;, description=&quot;cell phone&quot;, price=150.38)</span>
-<span class="sd">                object_id = yield emanager.save(product)</span>
-<span class="sd">                saved_product = yield emanager.find_one(_id=object_id)</span>
+<span class="sd">        # using with tornado.gen.coroutine</span>
+<span class="sd">        @coroutine</span>
+<span class="sd">        def create_product():</span>
+<span class="sd">            emanager = EntityManager(Product)</span>
+<span class="sd">            product = Product(name=&quot;p&quot;, description=&quot;cell phone&quot;, price=150.38)</span>
+<span class="sd">            object_id = yield emanager.save(product)</span>
+<span class="sd">            saved_product = yield emanager.find_one(_id=object_id)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">,</span> <span class="n">pluralize</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pluralize</span><span class="p">,</span> <span class="nb">bool</span><span class="p">),</span> <span class="s">&quot;Error: pluralize parameter must be bool&quot;</span>
@@ -108,7 +108,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">set_collection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__entity</span><span class="p">)</span>
 
 <div class="viewcode-block" id="EntityManager.set_pluralize"><a class="viewcode-back" href="../../pyenty.html#pyenty.entitymanager.EntityManager.set_pluralize">[docs]</a>    <span class="k">def</span> <span class="nf">set_pluralize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pluralize</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;enabled/disable pluralization &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;enabled/disable pluralization&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__pluralize</span> <span class="o">=</span> <span class="n">pluralize</span>
 </div>
 <div class="viewcode-block" id="EntityManager.save"><a class="viewcode-back" href="../../pyenty.html#pyenty.entitymanager.EntityManager.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">):</span>
@@ -117,23 +117,28 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__collection</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">as_dict</span><span class="p">())</span>
 </div>
 <div class="viewcode-block" id="EntityManager.remove"><a class="viewcode-back" href="../../pyenty.html#pyenty.entitymanager.EntityManager.remove">[docs]</a>    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Executes collection&#39;s remove method based on keyword args</span>
-<span class="sd">            Returns future</span>
+        <span class="sd">&quot;&quot;&quot;Returns future.</span>
 
-<span class="sd">            Usage:</span>
+<span class="sd">        Executes collection&#39;s remove method based on keyword args</span>
+
+<span class="sd">        Example::</span>
+
 <span class="sd">            manager = EntityManager(Product)</span>
 <span class="sd">            yield manager.remove(_id=object_id})</span>
 
-<span class="sd">         &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__collection</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="EntityManager.find_one"><a class="viewcode-back" href="../../pyenty.html#pyenty.entitymanager.EntityManager.find_one">[docs]</a>    <span class="k">def</span> <span class="nf">find_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Executes collection&#39;s find_one method based on keyword args</span>
-<span class="sd">            maps result ( dict to instance ) and return future</span>
+        <span class="sd">&quot;&quot;&quot;Returns future.</span>
 
-<span class="sd">            Usage:</span>
-<span class="sd">            manager = EntityManager(Product)</span>
-<span class="sd">            product_saved = yield manager.find_one(_id=object_id)</span>
+<span class="sd">        Executes collection&#39;s find_one method based on keyword args</span>
+<span class="sd">        maps result ( dict to instance ) and return future</span>
+
+<span class="sd">        Example::</span>
+
+<span class="sd">           manager = EntityManager(Product)</span>
+<span class="sd">           product_saved = yield manager.find_one(_id=object_id)</span>
 
 <span class="sd">         &quot;&quot;&quot;</span>
         <span class="n">future</span> <span class="o">=</span> <span class="n">TracebackFuture</span><span class="p">()</span>
@@ -152,12 +157,15 @@
 </div>
     <span class="nd">@coroutine</span>
 <div class="viewcode-block" id="EntityManager.find"><a class="viewcode-back" href="../../pyenty.html#pyenty.entitymanager.EntityManager.find">[docs]</a>    <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Executes collection&#39;s find method based on keyword args</span>
-<span class="sd">            maps results ( dict to list of entity instances).</span>
+        <span class="sd">&quot;&quot;&quot;Returns List(typeof=).</span>
 
-<span class="sd">            Set max_limit parameter to limit the amount of data send back through network</span>
+<span class="sd">        Executes collection&#39;s find method based on keyword args</span>
+<span class="sd">        maps results ( dict to list of entity instances).</span>
 
-<span class="sd">            Usage:</span>
+<span class="sd">        Set max_limit parameter to limit the amount of data send back through network</span>
+
+<span class="sd">        Example::</span>
+
 <span class="sd">            manager = EntityManager(Product)</span>
 <span class="sd">            products = yield manager.find(age={&#39;$gt&#39;: 17}, max_limit=100)</span>
 
@@ -174,9 +182,9 @@
         <span class="k">return</span> <span class="n">instances</span>
 </div>
 <div class="viewcode-block" id="EntityManager.update"><a class="viewcode-back" href="../../pyenty.html#pyenty.entitymanager.EntityManager.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Executes collection&#39;s update method based on keyword args</span>
+        <span class="sd">&quot;&quot;&quot; Executes collection&#39;s update method based on keyword args.</span>
 
-<span class="sd">            Usage:</span>
+<span class="sd">        Example::</span>
 
 <span class="sd">            manager = EntityManager(Product)</span>
 <span class="sd">            p = Product()</span>
@@ -209,7 +217,7 @@
 <div class="viewcode-block" id="EntityConnection"><a class="viewcode-back" href="../../pyenty.html#pyenty.entitymanager.EntityConnection">[docs]</a><span class="k">class</span> <span class="nc">EntityConnection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Create a session to be used in all mongodb requests</span>
 
-<span class="sd">        Usage Options:</span>
+<span class="sd">    Examples::</span>
 <span class="sd">         - EntitySession.open(db=&quot;db_name&quot;, io_loop=self.io_loop)</span>
 <span class="sd">         - EntitySession.open(db=&quot;db_name&quot;)</span>
 <span class="sd">         - EntityConnection.open(&#39;localhost&#39;, port_number, db=&quot;db_name&quot;)</span>
@@ -218,7 +226,6 @@
 
     <span class="nd">@classmethod</span>
 <div class="viewcode-block" id="EntityConnection.open"><a class="viewcode-back" href="../../pyenty.html#pyenty.entitymanager.EntityConnection.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-
         <span class="k">if</span> <span class="s">&#39;io_loop&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="n">motor_client</span> <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">MotorClient</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">io_loop</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;io_loop&#39;</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>

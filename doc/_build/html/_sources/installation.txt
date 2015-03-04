@@ -23,6 +23,6 @@ And finally, install Pyenty::
     pip install pyenty
 
 
-For persistency, motor connects to highly scalable database `MongoDB <http://www.mongodb.org//>`_.
+For persistency, pyenty connects (through motor) to highly scalable database `MongoDB <http://www.mongodb.org//>`_.
 Download and install the latest version.
 

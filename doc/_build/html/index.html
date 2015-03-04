@@ -54,15 +54,20 @@
 Although, motor accomplish the hard task of provide async methods to access mongodb,
 we  still have to get along with classic python dictionary which force us to create and maintain
 mapping of dicts-to-instance or instance-to-dicts.</p>
-<p>Simple example using motor directly:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nd">@gen.coroutine</span>
-<span class="k">def</span> <span class="nf">do_insert</span><span class="p">():</span>
-    <span class="c"># insert dict with the same attributes found in Product class</span>
-    <span class="n">product</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;my cell phone&#39;</span><span class="p">,</span><span class="s">&#39;description&#39;</span><span class="p">:</span><span class="s">&#39;blach phone&#39;</span><span class="p">,</span><span class="s">&#39;price&#39;</span><span class="p">:</span><span class="mf">10.5</span><span class="p">}</span>
+<p>Simple example using motor:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#saves a dict with some values</span>
+<span class="nd">@gen.coroutine</span>
+<span class="k">def</span> <span class="nf">save_product</span><span class="p">():</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;cell phone&#39;</span><span class="p">,</span> <span class="s">&#39;description&#39;</span><span class="p">:</span><span class="s">&#39;black phone&#39;</span><span class="p">,</span> <span class="s">&#39;price&#39;</span><span class="p">:</span><span class="mf">10.5</span><span class="p">}</span>
+    <span class="c"># motor collection</span>
+    <span class="n">objectid</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">collection</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
 
-    <span class="c"># call motor collection</span>
-    <span class="n">future</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">future</span>
+<span class="nd">@gen.coroutine</span>
+<span class="k">def</span> <span class="nf">find_product</span><span class="p">():</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">collection</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s">&#39;_id&#39;</span><span class="p">:</span> <span class="n">objectid</span><span class="p">})</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">product</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">product</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">product</span><span class="p">[</span><span class="s">&#39;price&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>There&#8217;s no problem if you prefer to work like this, but you always have to use some kind of mapping
