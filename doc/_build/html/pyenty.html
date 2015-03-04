@@ -63,10 +63,16 @@
 <em class="property">class </em><code class="descclassname">pyenty.entitymanager.</code><code class="descname">EntityConnection</code><a class="reference internal" href="_modules/pyenty/entitymanager.html#EntityConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyenty.entitymanager.EntityConnection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p>Create a session to be used in all mongodb requests</p>
-<p>Usage:
-EntitySession.open(db=&#8221;ym_db_test&#8221;, io_loop=self.io_loop)
-Or
-EntitySession.open(db=&#8221;ym_db_test&#8221;)</p>
+<dl class="docutils">
+<dt>Usage Options:</dt>
+<dd><ul class="first last simple">
+<li>EntitySession.open(db=&#8221;db_name&#8221;, io_loop=self.io_loop)</li>
+<li>EntitySession.open(db=&#8221;db_name&#8221;)</li>
+<li>EntityConnection.open(&#8216;localhost&#8217;, port_number, db=&#8221;db_name&#8221;)</li>
+<li>EntityConnection.open(&#8216;localhost&#8217;, port_number, db=&#8221;db_name&#8221;, io_loop=self.io_loop)</li>
+</ul>
+</dd>
+</dl>
 <dl class="classmethod">
 <dt id="pyenty.entitymanager.EntityConnection.close">
 <em class="property">classmethod </em><code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyenty/entitymanager.html#EntityConnection.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyenty.entitymanager.EntityConnection.close" title="Permalink to this definition">¶</a></dt>
@@ -81,7 +87,7 @@ EntitySession.open(db=&#8221;ym_db_test&#8221;)</p>
 
 <dl class="classmethod">
 <dt id="pyenty.entitymanager.EntityConnection.open">
-<em class="property">classmethod </em><code class="descname">open</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyenty/entitymanager.html#EntityConnection.open"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyenty.entitymanager.EntityConnection.open" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">open</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyenty/entitymanager.html#EntityConnection.open"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyenty.entitymanager.EntityConnection.open" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -90,25 +96,31 @@ EntitySession.open(db=&#8221;ym_db_test&#8221;)</p>
 <dt id="pyenty.entitymanager.EntityManager">
 <em class="property">class </em><code class="descclassname">pyenty.entitymanager.</code><code class="descname">EntityManager</code><span class="sig-paren">(</span><em>entity</em>, <em>pluralize=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyenty/entitymanager.html#EntityManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyenty.entitymanager.EntityManager" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<p>As well as responsible for collection&#8217;s name setup, object-document mapping through entity mapper, entity
-wraps Motor&#8217;s collection functions</p>
-<p>Usage:
-class Product(Entity):</p>
+<p>Class responsible for object-document mapping.</p>
+<p>Wraps motor functions and provide mapping of instance of Entity
+Entity is a pyenty&#8217;s base class needed to use with EntityManager</p>
 <blockquote>
-<div><p>name = Str()
-description = Str()
-price = Float()</p>
-<dl class="docutils">
-<dt>def __init__(self, name=&#8221;&#8221;, description=&#8221;&#8221;, price=0.0)</dt>
-<dd>self.name = name
-self.description = description
-self.price = price</dd>
-</dl>
+<div><p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre>class Product(Entity):
+    name = Str()
+    description = Str()
+    price = Float()
+
+    def __init__(self, name=&quot;&quot;, description=&quot;&quot;, price=0.0)
+        self.name = name
+        self.description = description
+        self.price = price
+
+# using with tornado.gen.coroutine
+@coroutine
+def create_product():
+    emanager = EntityManager(Product)
+    product = Product(name=&quot;p&quot;, description=&quot;cell phone&quot;, price=150.38)
+    object_id = yield emanager.save(product)
+    saved_product = yield emanager.find_one(_id=object_id)
+</pre></div>
+</div>
 </div></blockquote>
-<p>emanager = EntityManager(Product)
-product = Product(name=&#8221;p&#8221;, description=&#8221;cell phone&#8221;, price=150.38)
-object_id = yield emanager.save(product)
-saved_product = yield emanager.find_one(_id=object_id)</p>
 <dl class="method">
 <dt id="pyenty.entitymanager.EntityManager.find">
 <code class="descname">find</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyenty/entitymanager.html#EntityManager.find"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyenty.entitymanager.EntityManager.find" title="Permalink to this definition">¶</a></dt>
