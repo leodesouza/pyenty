@@ -7,7 +7,7 @@
 A Tornado App Example Using PyEnty
 ==================================
 
-Here's a simple and all you need to use pyenty in tornado application ::
+Here's a simple example of how to create a tornado application with pyenty ::
 
     from tornado.gen import coroutine
     import tornado.httpserver

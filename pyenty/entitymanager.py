@@ -16,7 +16,6 @@
 
 """A simple object-document mapping for mongodb-motor and tornado applications."""
 
-
 import motor
 from tornado.concurrent import TracebackFuture
 from tornado.gen import coroutine
@@ -48,9 +47,6 @@ class EntityManager(object):
                 product = Product(name="p", description="cell phone", price=150.38)
                 object_id = yield emanager.save(product)
                 saved_product = yield emanager.find_one(_id=object_id)
-
-
-
     """
     def __init__(self, entity, pluralize=False):
         assert isinstance(pluralize, bool), "Error: pluralize parameter must be bool"
@@ -63,17 +59,16 @@ class EntityManager(object):
         self.set_collection(self.__entity)
 
     def set_pluralize(self, pluralize):
-        """ enabled/disable pluralization """
+        """enabled/disable pluralization """
         self.__pluralize = pluralize
 
     def save(self, entity):
-        """ Maps entity to dict and returns future
-        """
+        """Maps entity to dict and returns future"""
         assert isinstance(entity, Entity), " entity must have an instance of Entity"
         return self.__collection.save(entity.as_dict())
 
     def remove(self, **kwargs):
-        """ Executes collection's remove method based on keyword args
+        """Executes collection's remove method based on keyword args
             Returns future
 
             Usage:
@@ -84,7 +79,7 @@ class EntityManager(object):
         return self.__collection.remove(kwargs)
 
     def find_one(self, **kwargs):
-        """ Executes collection's find_one method based on keyword args
+        """Executes collection's find_one method based on keyword args
             maps result ( dict to instance ) and return future
 
             Usage:
@@ -101,6 +96,7 @@ class EntityManager(object):
                 instance = self.__entity()
                 instance.map_dict(result)
                 future.set_result(instance)
+
         self.__collection.find_one(kwargs, callback=handle_response)
 
         return future
@@ -170,6 +166,7 @@ class EntityConnection(object):
          - EntityConnection.open('localhost', port_number, db="db_name")
          - EntityConnection.open('localhost', port_number, db="db_name", io_loop=self.io_loop)
     """
+
     @classmethod
     def open(cls, *args, **kwargs):
 

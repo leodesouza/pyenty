@@ -64,4 +64,5 @@ Create an instance of entity with some data and call EntityManager to save and f
    requirements
    example
    releasenotes
+   api
 

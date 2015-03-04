@@ -13,7 +13,7 @@ structure for mongodb.
 See :ref:`Installation section <installation>`.
 
 You can also install all requirements to use pyenty just using motor pip install.
-See `Motor Installation <https://motor.readthedocs.org/en/latest/installation.html>`_::
+See `Motor Installation <https://motor.readthedocs.org/en/latest/installation.html>`_
 
 If you choose to install the packages one by one, check pyenty requirements:
 
