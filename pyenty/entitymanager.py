@@ -24,24 +24,33 @@ from pyenty.types import Entity
 
 
 class EntityManager(object):
-    """As well as responsible for collection's name setup, object-document mapping through entity mapper, entity
-        wraps Motor's collection functions
+    """Class responsible for object-document mapping.
 
-        Usage:
-        class Product(Entity):
-            name = Str()
-            description = Str()
-            price = Float()
+       Wraps motor functions and provide mapping of instance of Entity
+       Entity is a pyenty's base class needed to use with EntityManager
 
-            def __init__(self, name="", description="", price=0.0)
-                self.name = name
-                self.description = description
-                self.price = price
+        Example::
 
-        emanager = EntityManager(Product)
-        product = Product(name="p", description="cell phone", price=150.38)
-        object_id = yield emanager.save(product)
-        saved_product = yield emanager.find_one(_id=object_id)
+            class Product(Entity):
+                name = Str()
+                description = Str()
+                price = Float()
+
+                def __init__(self, name="", description="", price=0.0)
+                    self.name = name
+                    self.description = description
+                    self.price = price
+
+            # using with tornado.gen.coroutine
+            @coroutine
+            def create_product():
+                emanager = EntityManager(Product)
+                product = Product(name="p", description="cell phone", price=150.38)
+                object_id = yield emanager.save(product)
+                saved_product = yield emanager.find_one(_id=object_id)
+
+
+
     """
     def __init__(self, entity, pluralize=False):
         assert isinstance(pluralize, bool), "Error: pluralize parameter must be bool"
@@ -58,7 +67,8 @@ class EntityManager(object):
         self.__pluralize = pluralize
 
     def save(self, entity):
-        """ Maps entity to dict and returns future"""
+        """ Maps entity to dict and returns future
+        """
         assert isinstance(entity, Entity), " entity must have an instance of Entity"
         return self.__collection.save(entity.as_dict())
 
