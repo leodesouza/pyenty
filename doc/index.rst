@@ -20,6 +20,7 @@ Simple example using motor::
         # motor collection
         objectid = yield collection.insert(product)
 
+    # read from motor's find_one method
     @gen.coroutine
     def find_product():
         product = yield collection.find_one({'_id': objectid})
