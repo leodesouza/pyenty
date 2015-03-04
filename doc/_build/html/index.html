@@ -62,6 +62,7 @@ mapping of dicts-to-instance or instance-to-dicts.</p>
     <span class="c"># motor collection</span>
     <span class="n">objectid</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">collection</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
 
+<span class="c">#read from motor&#39;s find_one method</span>
 <span class="nd">@gen.coroutine</span>
 <span class="k">def</span> <span class="nf">find_product</span><span class="p">():</span>
     <span class="n">product</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">collection</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s">&#39;_id&#39;</span><span class="p">:</span> <span class="n">objectid</span><span class="p">})</span>
@@ -73,17 +74,27 @@ mapping of dicts-to-instance or instance-to-dicts.</p>
 <p>There&#8217;s no problem if you prefer to work like this, but you always have to use some kind of mapping
 for any new added class and maintain your existing mapping when something changes.
 If you really want to release yourself from boring task of accessing key/value
-whenever you write code to read/write from/to database, we suggest you to work in the following way:</p>
-<p>Write your entity:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Product</span><span class="p">(</span><span class="n">Entity</span><span class="p">):</span>
+whenever you write code to read/write from/to database, we suggest you to work such as in the example below:</p>
+<p>Write your entities:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">ShippingOptions</span><span class="p">(</span><span class="n">Entity</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Str</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+<span class="k">class</span> <span class="nc">Product</span><span class="p">(</span><span class="n">Entity</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">Str</span><span class="p">()</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">Str</span><span class="p">()</span>
     <span class="n">price</span> <span class="o">=</span> <span class="n">Float</span><span class="p">()</span>
+    <span class="n">shipping_options</span> <span class="o">=</span> <span class="n">List</span><span class="p">(</span><span class="n">ShippingOptions</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span>
+
+    <span class="k">def</span> <span class="nf">add_shipping_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shipping_option</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">shipping_option</span><span class="p">,</span> <span class="n">Entity</span><span class="p">),</span> <span class="s">&quot;shipping_option is not an instance of Entity&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shipping_options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">shipping_option</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Create an instance of entity with some data and call EntityManager to save and find:</p>
@@ -91,15 +102,28 @@ whenever you write code to read/write from/to database, we suggest you to work i
 <span class="k">def</span> <span class="nf">save_product</span><span class="p">():</span>
     <span class="n">emanager</span> <span class="o">=</span> <span class="n">EntityManager</span><span class="p">(</span><span class="n">Product</span><span class="p">)</span>
     <span class="n">product</span> <span class="o">=</span> <span class="n">Product</span><span class="p">(</span><span class="s">&#39;book&#39;</span><span class="p">,</span> <span class="s">&#39;book of the year&#39;</span><span class="p">,</span> <span class="mf">35.00</span><span class="p">)</span>
+
+    <span class="c"># adding shipping options</span>
+    <span class="n">product</span><span class="o">.</span><span class="n">add_shipping_option</span><span class="p">(</span><span class="n">ShippingOptions</span><span class="p">(</span><span class="s">&#39;option1&#39;</span><span class="p">))</span>
+    <span class="n">product</span><span class="o">.</span><span class="n">add_shipping_option</span><span class="p">(</span><span class="n">ShippingOptions</span><span class="p">(</span><span class="s">&#39;option2&#39;</span><span class="p">))</span>
+    <span class="n">product</span><span class="o">.</span><span class="n">add_shipping_option</span><span class="p">(</span><span class="n">ShippingOptions</span><span class="p">(</span><span class="s">&#39;option3&#39;</span><span class="p">))</span>
+
     <span class="n">object_id</span> <span class="o">=</span> <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">emanager</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
 
 <span class="nd">@gen.coroutine</span>
 <span class="k">def</span> <span class="nf">find_product</span><span class="p">():</span>
     <span class="n">emanager</span> <span class="o">=</span> <span class="n">EntityManager</span><span class="p">(</span><span class="n">Product</span><span class="p">)</span>
     <span class="n">saved_product</span> <span class="o">=</span> <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">emanager</span><span class="o">.</span><span class="n">find_one</span><span class="p">(</span><span class="n">object_id</span><span class="p">)</span>
+
+    <span class="c">#read product attributes</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">saved_product</span><span class="o">.</span><span class="n">name</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">saved_product</span><span class="o">.</span><span class="n">description</span>
     <span class="n">price</span> <span class="o">=</span> <span class="n">saved_product</span><span class="o">.</span><span class="n">price</span>
+
+    <span class="c">#read shipping options</span>
+    <span class="c">#it&#39;s just an example to show that pyenty maps results to object</span>
+    <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="n">saved</span><span class="o">.</span><span class="n">product</span><span class="o">.</span><span class="n">shipping_options</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">name</span>
 </pre></div>
 </div>
 <div class="toctree-wrapper compound">

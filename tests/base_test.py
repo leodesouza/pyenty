@@ -99,6 +99,29 @@ class StoreWithThreeClientsOnly(Entity):
         self.clients.append(client)
 
 
+class ShippingOptions(Entity):
+    name = Str()
+
+    def __init__(self, name=""):
+        self.name = name
+
+
+class ProductWithShippingOptions(Entity):
+    name = Str()
+    description = Str()
+    price = Float()
+    shipping_options = List(ShippingOptions)
+
+    def __init__(self, name="", description="", price=0.0):
+        self.name = name
+        self.description = description
+        self.price = price
+
+    def add_shipping_option(self, shipping_option):
+        assert isinstance(shipping_option, Entity), "shipping_option is not an instance of Entity"
+        self.shipping_options.append(shipping_option)
+
+
 class BaseTestFactory():
 
     @staticmethod
@@ -140,6 +163,14 @@ class BaseTestFactory():
         store = StoreWithThreeClientsOnly('pet_shop')
         store.add_clients(BaseTestFactory.create_clients_with_many_products_and_addresses())
         return store
+
+    @staticmethod
+    def create_product_with_3_shipping_options():
+        product = ProductWithShippingOptions('video game', 'console', 1200.00)
+        product.add_shipping_option(ShippingOptions('option1'))
+        product.add_shipping_option(ShippingOptions('option2'))
+        product.add_shipping_option(ShippingOptions('option3'))
+        return product
 
 
 def compare_obj_dict(client, dict_client):

@@ -3,7 +3,8 @@ from tornado.testing import gen_test, AsyncTestCase
 from pyenty import EntityManager
 from pyenty.entitymanager import EntityConnection
 from tests.base_test import BaseTestFactory, ClientWithAddress, compare_objs, ClientWithManyProducts, \
-    ClientWithManyProductsAndAddress, StoreWithThreeClientsOnly, SimpleClient, ClientWithOneAddress, Address
+    ClientWithManyProductsAndAddress, StoreWithThreeClientsOnly, SimpleClient, ClientWithOneAddress, Address, \
+    ProductWithShippingOptions
 
 
 class BaseTest(AsyncTestCase):
@@ -189,6 +190,24 @@ class ConnectionUsingHostPortTest(AsyncTestCase):
         object_id = yield self.emanager.save(self.simple_client)
         saved_client = yield self.emanager.find_one(_id=object_id)
         self.assertTrue(compare_objs(self.simple_client, saved_client), "client was not mapped")
+
+
+class ProductWithShippingOptionsTest(AsyncTestCase):
+    def setUp(self):
+        super(ProductWithShippingOptionsTest, self).setUp()
+        EntityConnection.open('localhost', 27017, db="product_with_shipping", io_loop=self.io_loop)
+        self.emanager = EntityManager(ProductWithShippingOptions)
+        self.product = BaseTestFactory.create_product_with_3_shipping_options()
+
+    @gen_test
+    def test_product_with_3_shipping_options(self):
+        object_id = yield self.emanager.save(self.product)
+        saved_product = yield self.emanager.find_one(_id=object_id)
+        self.assertTrue(compare_objs(self.product, saved_product), "product was not properly saved")
+
+
+
+
 
 
 
