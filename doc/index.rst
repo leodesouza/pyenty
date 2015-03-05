@@ -35,7 +35,7 @@ for any new added class and maintain your existing mapping when something change
 If you really want to release yourself from boring task of accessing key/value
 whenever you write code to read/write from/to database, we suggest you to work such as in the example below:
 
-Write your entities::
+defining entities::
 
     class ShippingOptions(Entity):
         name = Str()
@@ -61,7 +61,7 @@ Write your entities::
 
 
 
-Create an instance of entity with some data and call EntityManager to save and find::
+Save and find from mongodb::
 
     @gen.coroutine
     def save_product():
@@ -78,7 +78,7 @@ Create an instance of entity with some data and call EntityManager to save and f
     @gen.coroutine
     def find_product():
         emanager = EntityManager(Product)
-        saved_product = yield self.emanager.find_one(object_id)
+        saved_product = yield self.emanager.find_one(_id=object_id)
 
         #read product attributes
         name = saved_product.name
