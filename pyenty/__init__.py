@@ -27,8 +27,8 @@ except:
     raise ImportError("Tornado is not installed. Install motor using pip install "
                       "preferably https://github.com/mongodb/motor/")
 
-version = "0.1.2"
-version_info = (0, 1, 2)
+version = "0.1.4"
+version_info = (0, 1, 4)
 
 from pyenty.entitymanager import EntityManager, EntityConnection
 from pyenty import types
