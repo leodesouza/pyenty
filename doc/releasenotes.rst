@@ -6,13 +6,13 @@
 Release Notes
 ====================================
 
-Version 0.1.2
+Version 0.1.4
 -------------
 
-25/Fev - 2015
+5/Mar - 2015
 ~~~~~~~~~~~~~
 
-Fix the EntityConnection.open which was not keeping the connection alive.
+Fix - EntityConnection refactoring
 
 
 Version 0.1.3
@@ -22,6 +22,17 @@ Version 0.1.3
 ~~~~~~~~~~~~~
 
 Fix - Call EntityConnection.open with *args host and port
+
+
+Version 0.1.2
+-------------
+
+25/Fev - 2015
+~~~~~~~~~~~~~
+
+Fix the EntityConnection.open which was not keeping the connection alive.
+
+
 
 
 
