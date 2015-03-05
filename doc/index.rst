@@ -54,7 +54,7 @@ Write your entities::
             self.price = price
 
         def add_shipping_option(self, shipping_option):
-            assert isinstance(shipping_option, Entity), "shipping_option is not an instance of Entity"
+            assert isinstance(shipping_option, Entity)
             self.shipping_options.append(shipping_option)
 
 
